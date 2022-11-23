@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style type="text/css">
+        * {
+            font-size: 130%;
+            font-family: Courier, monospace;
+            color: #ffffff;
+        }
+
+        html {
+            background-color: #000000;
+            padding: 6%;
+        }
+
+        .name,
+        .score {
+            margin-right: 3%;
+        }
+
+        #dealer h1 {
+            color: darksalmon;
+        }
+
+        #user h1 {
+            color: aquamarine;
+        }
+
+        button {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: row;
+        }
+
+        button:disabled {
+            color: grey;
+            border: 2px solid gray;
+        }
+        #bet {
+            color: #ff4ba8;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dealer">
+        <div class="wrapper">
+            <h1 class="name" id="nameDealer">~ Dealer</h1>
+            <h1 class="score" id="scoreDealer">?</h1>
+            <h1 class="status" id="statusDealer"></h1>
+        </div>
+        <p id="cardsDealer">&nbsp;</p>
+    </div>
+    <div id="user">
+        <div class="wrapper">
+            <h1 class="name" id="nameUser">~ User</h1>
+            <h1 class="score" id="scoreUser">?</h1>
+            <h1 class="status" id="statusUser"></h1>
+        </div>
+        <p id="cardsUser">&nbsp;</p>
+    </div>
+    <button id="btnHit">Hit</button>
+    <button id="btnStand">Stand</button>
+    <button id="btnRestart">Restart</button>
+    <h1 id="bet">$ </h1>
+
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="utilities.js"></script>
+</body>
+
+</html>
