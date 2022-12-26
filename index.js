@@ -1,6 +1,6 @@
 "use strict";
 
-import { formatArray, getSumCards } from "./utilities.js";
+import {getSumCards} from "./utilities.js";
 
 const startBet = 100;
 
