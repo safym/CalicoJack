@@ -1,6 +1,6 @@
 # calico-jack
 
-Github Pages: https://safym.github.io/calico-jack/
+## Github Pages: https://safym.github.io/calico-jack/
 
 Stardew valley mini game (modified version of blackjack)
 
