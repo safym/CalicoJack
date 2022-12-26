@@ -31,7 +31,7 @@ class Game {
   userStand() {
     this.userIsStand = true;
     this.user.stand = true;
-    this.updateUI()
+    this.updateUI();
   }
   setDoubleBet() {
     this.bet = this.bet * 2;
@@ -70,31 +70,59 @@ class Player {
 
 class PlayerUI {
   constructor(name) {
-    this.$cards = document.getElementById("cards" + name);
     this.$score = document.getElementById("score" + name);
     this.$status = document.getElementById("status" + name);
+    this.$cards = document.getElementById("cards" + name);
   }
   updatePlayerUI(player, userIsStand = false) {
-    let cardsText;
     let scoreText;
 
-    console.log(player.cards, userIsStand)
-
     if (player.name == "User" || userIsStand) {
-      console.log("карты открыты!")
-      cardsText = formatArray(player.cards, false);
-      scoreText =  player.score;
+      console.log("карты открыты!");
+
+      scoreText = player.score;
+
+      for (let i = 0; i < player.cards.length; i++) {
+        if (!this.$cards.children[i]) {
+          let newCard = document.createElement("div");
+          newCard.innerText = player.cards[i];
+          newCard.className = "elementCard";
+          this.$cards.appendChild(newCard);
+
+          setTimeout(() => newCard.classList.add("animate"), 80);
+        } else if (i == 0 && player.name == "Dealer") {
+          this.$cards.children[i].innerHTML = player.cards[i];
+          this.$cards.children[i].classList.remove("hide");
+          setTimeout(() => this.$cards.children[i].classList.add("flip"), 80);
+        }
+      }
     } else {
-      console.log("карты скрыты!")
-      cardsText = formatArray(player.cards, !userIsStand);
+      console.log("карты скрыты!");
+
       scoreText = "?";
+
+      for (let i = 0; i < player.cards.length; i++) {
+        if (!this.$cards.children[i]) {
+          let newCard = document.createElement("div");
+
+          newCard.className = i == 0 ? "elementCard hide" : "elementCard";
+          newCard.innerText = i == 0 ? "" : player.cards[i];
+
+          this.$cards.appendChild(newCard);
+
+          setTimeout(() => newCard.classList.add("animate"), 150);
+        }
+      }
     }
 
-    this.$cards.innerText = cardsText;
     this.$score.innerText = scoreText;
   }
   reset() {
     this.$status.innerText = "";
+
+    while (this.$cards.firstChild) {
+      this.$cards.removeChild(this.$cards.firstChild);
+    }
   }
 }
 
@@ -140,8 +168,7 @@ class GameUI {
           checkTurn(this.reference);
         }, 1000);
       }
-    }
-    else if (player.name == "User") {
+    } else if (player.name == "User") {
       this.reference.setAnotherCard(player);
       this.reference.updateUI();
 
@@ -151,7 +178,7 @@ class GameUI {
 
   stand(ref) {
     ref.userStand();
-    ref.updateUI()
+    ref.updateUI();
 
     checkTurn(ref);
     this.hit(ref.dealer);
@@ -199,8 +226,7 @@ function checkTurn(gameObject) {
     if (gameObject.user.score == 21 || gameObject.dealer.score > 21) {
       gameObject.user.setWinner();
       gameObject.setDoubleBet();
-    }
-    else if (
+    } else if (
       gameObject.dealer.score == 21 ||
       gameObject.user.score > 21 ||
       (gameObject.user.score < gameObject.dealer.score && gameObject.user.stand)

@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap");
+
+:root {
+  --bg-color: #073b4c;
+  --cards-bg-color: #11a7b2;
+  --cards-hide-color: #06777f;;
+  --cards-text-color: #adfbe6;
+  --user-text-color: #ffd166;
+  --dealer-text-color: #ef476f;
+  --btn-color: #6bdeaa;
+  --btn-disable-color: #6bdeaa6d;
+}
+
+* {
+  font-family: "Kosugi Maru", sans-serif;
+  font-size: 125%;
+  color: #ffffff;
+}
+
+html {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  --s: 140px; /* control the size */
+
+  --_g: #0000 52%, #053f41 /* first color */ 54% 57%, #0000 59%;
+  background: radial-gradient(farthest-side at -33.33% 50%, var(--_g)) 0
+      calc(var(--s) / 2),
+    radial-gradient(farthest-side at 50% 133.33%, var(--_g)) calc(var(--s) / 2)
+      0,
+    radial-gradient(farthest-side at 133.33% 50%, var(--_g)),
+    radial-gradient(farthest-side at 50% -33.33%, var(--_g)), #053241; /* second color */
+  background-size: calc(var(--s) / 4.667) var(--s),
+    var(--s) calc(var(--s) / 4.667);
+}
+
+.mainWrapper {
+  display: inline-block;
+  min-width: 700px;
+
+  padding: 30px;
+  
+  border-radius: 20px;
+  background-color: var(--bg-color);
+  box-shadow: var(--btn-color) 0px 1px 4px, var(--btn-color) 0px 0px 0px 3px;
+}
+
+h1 {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#dealer h1 {
+  color: var(--dealer-text-color);
+}
+
+#user h1 {
+  color: var(--user-text-color);
+}
+
+.wrapper,
+.controls,
+.cardsWrapper  {
+  display: flex;
+  flex-direction: row;
+}
+
+/* cards */
+
+.elementCard {
+  transform: scale(0);
+  transition: 0.1s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  min-width: 80px;
+  height: 100px;
+  min-height: 100px;
+
+  margin: 20px;
+  padding: 10px;
+
+  color: var(--cards-text-color);
+  background-color: var(--cards-bg-color);
+  border-radius: 10px;
+}
+
+.animate {
+  transform: scale(1);
+}
+
+.hide {
+  transform: rotateY(180deg);
+  background-color: var(--cards-hide-color);
+  opacity: 1;
+}
+
+.flip {
+  transform: rotateY(0deg);
+}
+
+/* controls */
+
+.controls {
+  justify-content: space-between;
+}
+
+.controls * {
+  color: var(--btn-color);
+}
+
+button {
+  padding-left: 10px;
+  padding-right: 10px;
+
+  background: none;
+  border-radius: 15px;
+  border: 4px solid var(--btn-color);
+}
+
+button:disabled {
+  color: var(--btn-disable-color);
+  border: 4px solid var(--btn-disable-color);
+}
+
+
