@@ -1,4 +1,7 @@
 # calico-jack
+
+Github Pages: https://safym.github.io/calico-jack/
+
 Stardew valley mini game (modified version of blackjack)
 
 Цель - набрать больше очков чем дилер, но не более 21.
