@@ -9,6 +9,7 @@
   --dealer-text-color: #ef476f;
   --btn-color: #6bdeaa;
   --btn-disable-color: #6bdeaa6d;
+  --btn-bg: #217d7049;
 }
 
 * {
@@ -130,5 +131,10 @@ button:disabled {
   color: var(--btn-disable-color);
   border: 4px solid var(--btn-disable-color);
 }
+
+button:hover {
+  background-color: var(--btn-bg);
+}
+
 
 
