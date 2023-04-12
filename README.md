@@ -1,4 +1,4 @@
-<h1 align="center">💬 Calicojack</h1>
+<h1 align="center">🃏 Calicojack</h1>
 
 <p align="center">
   <a href="https://skillicons.dev">
